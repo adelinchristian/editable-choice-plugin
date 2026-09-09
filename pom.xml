@@ -15,12 +15,19 @@
         <changelist>999999-SNAPSHOT</changelist>
         <!-- Recommended versions: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#currently-recommended-versions -->
         <jenkins.version>2.361.4</jenkins.version>
+        <job-dsl.version>1.87</job-dsl.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Editable Choice Plugin</name>
     <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
 
     <dependencies>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>job-dsl</artifactId>
+                <version>${job-dsl.version}</version>
+                <optional>true</optional>
+            </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>

@@ -41,6 +41,27 @@ You can also configure it for GUI-based jobs like freestyle projects:
 
 #image:images/jobconfiguration.png[Job configuration]#
 
+== Job DSL
+
+The plugin provides a Job DSL parameter method when the Job DSL plugin is installed:
+
+[source,groovy]
+----
+pipelineJob('example') {
+  parameters {
+    editableChoiceParam(
+      'FRUIT',
+      ['Apple', 'Grape', 'Orange'],
+      'Apple',
+      'Choose your favorite fruit'
+    )
+  }
+}
+----
+
+The value remains editable. The list provides predefined suggestions, while
+`restrict` remains false by default so users may enter a value outside the list.
+
 == Pipeline syntaxes
 
 Full pipeline example:
