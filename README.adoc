@@ -98,6 +98,35 @@ parameters for `+filterConfig+`:
 |caseInsensitive|boolean|        |Match in case insensitive
 |===
 
+== Build
+
+The build requires Java 17 or newer and Maven 3.9 or newer. From the plugin
+repository root, run:
+
+[source,bash]
+----
+mvn clean verify
+----
+
+If Maven is installed in a user-local directory, use its full path instead:
+
+[source,bash]
+----
+$HOME/.local/opt/apache-maven-3.9.11/bin/mvn clean verify
+----
+
+The build runs the unit tests and creates the installable Jenkins plugin at:
+
+[source,text]
+----
+target/editable-choice.hpi
+----
+
+To install it manually, open Jenkins and go to *Manage Jenkins* -> *Plugins* ->
+*Advanced*, upload the `.hpi` file, and restart Jenkins. For a permanent
+installation, publish the artifact to the organization’s plugin repository and
+add the plugin ID and version to the Jenkins-as-code `config/plugins.yml`.
+
 == Issues
 
 Report issues and enhancements in the https://issues.jenkins-ci.org/[Jenkins issue tracker].
