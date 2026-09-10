@@ -100,9 +100,10 @@ parameters for `+filterConfig+`:
 
 == Build
 
-The build requires Java 17 and Maven 3.9 or newer. Java 17 is recommended for
-this project because the legacy license-processing plugin is not compatible
-with newer Java versions.
+The build requires Java 21 or newer and Maven 3.9 or newer. Java 22 has been
+verified for this project. Jenkins 2.555.3 is the configured baseline, and the
+plugin parent provides the current build tools needed to process Java 21
+bytecode.
 
 From the plugin repository root, run the full verification build:
 
@@ -111,22 +112,23 @@ From the plugin repository root, run the full verification build:
 mvn clean verify
 ----
 
-On Windows PowerShell, set Java 17 and use the Maven installation path. Quote
+On Windows PowerShell, set Java 22 and use the Maven installation path. Quote
 the `-D` arguments so PowerShell passes them to Maven unchanged:
 
 [source,powershell]
 ----
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-22"
 $env:Path = "$env:JAVA_HOME\bin;$env:Path"
 
 Set-Location "C:\path\to\editable-choice-plugin"
 & "C:\LegacyApp\apache-maven-3.9.16\bin\mvn.cmd" clean package "-DskipTests" "-Dspotbugs.skip=true"
 ----
 
-The command above skips tests and SpotBugs and is useful for producing the HPI
-when the SpotBugs check reports the existing `appendNode` return-value warning.
-For a complete verification build, use `mvn clean verify` after resolving that
-warning.
+The command above skips tests and SpotBugs and produces the HPI. Java 22 is
+non-LTS, so Maven may report a warning even when the build succeeds. On Windows,
+the `clean` phase can occasionally fail if a previous Maven process still holds
+`target\antrun`; close the process and retry, or run `mvn package` without
+`clean`.
 
 If Maven is installed in a user-local directory on Linux or macOS, use its full path instead:
 

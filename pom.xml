@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.66</version>
+        <version>6.2221.va_045130417c9</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.plugins</groupId>
@@ -14,8 +14,9 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <!-- Recommended versions: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#currently-recommended-versions -->
-        <jenkins.version>2.387.3</jenkins.version>
-        <job-dsl.version>1.87</job-dsl.version>
+        <jenkins.version>2.555.3</jenkins.version>
+        <job-dsl.version>3732.v9a_c49a_61a_313</job-dsl.version>
+        <hpi-plugin.version>3.1795.v6fb_496fc129b_</hpi-plugin.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     </properties>
     <name>Editable Choice Plugin</name>
@@ -27,6 +28,12 @@
                 <artifactId>job-dsl</artifactId>
                 <version>${job-dsl.version}</version>
                 <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>6.1.0</version>
+                <scope>provided</scope>
             </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -49,8 +56,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.387.x</artifactId>
-                <version>2543.vfb_1a_5fb_9496d</version>
+                <artifactId>bom-2.555.x</artifactId>
+                <version>7002.v028a_3607ddc8</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>

@@ -18,7 +18,7 @@ public class EditableChoiceJobDslExtension extends ContextExtensionPoint {
      * @return parameter definition XML
      */
     @DslExtensionMethod(context = BuildParametersContext.class)
-    public Object editableChoiceParam(String parameterName, List<String> choices) {
+    public Object editableChoiceParam(final String parameterName, final List<String> choices) {
         return editableChoiceParam(parameterName, choices, null, null);
     }
 
@@ -32,7 +32,7 @@ public class EditableChoiceJobDslExtension extends ContextExtensionPoint {
      */
     @DslExtensionMethod(context = BuildParametersContext.class)
     public Object editableChoiceParam(
-            String parameterName, List<String> choices, String defaultValue) {
+            final String parameterName, final List<String> choices, final String defaultValue) {
         return editableChoiceParam(parameterName, choices, defaultValue, null);
     }
 
@@ -47,7 +47,10 @@ public class EditableChoiceJobDslExtension extends ContextExtensionPoint {
      */
     @DslExtensionMethod(context = BuildParametersContext.class)
     public Object editableChoiceParam(
-            String parameterName, List<String> choices, String defaultValue, String description) {
+            final String parameterName,
+            final List<String> choices,
+            final String defaultValue,
+            final String description) {
         EditableChoiceParameterDefinition definition =
                 new EditableChoiceParameterDefinition(parameterName);
         definition.setChoices(choices);
