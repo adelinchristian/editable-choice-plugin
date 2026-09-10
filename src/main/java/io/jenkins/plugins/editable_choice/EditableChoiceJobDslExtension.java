@@ -1,12 +1,10 @@
 package io.jenkins.plugins.editable_choice;
 
 import hudson.Extension;
-import java.util.Collections;
 import java.util.List;
 import javaposse.jobdsl.dsl.helpers.BuildParametersContext;
 import javaposse.jobdsl.plugin.ContextExtensionPoint;
 import javaposse.jobdsl.plugin.DslExtensionMethod;
-import groovy.util.Node;
 
 /** Adds native Job DSL support for editable choice parameters. */
 @Extension(optional = true)
@@ -50,22 +48,15 @@ public class EditableChoiceJobDslExtension extends ContextExtensionPoint {
     @DslExtensionMethod(context = BuildParametersContext.class)
     public Object editableChoiceParam(
             String parameterName, List<String> choices, String defaultValue, String description) {
-        Node definitionNode = new Node(
-                null, "io.jenkins.plugins.editable_choice.EditableChoiceParameterDefinition");
-        definitionNode.appendNode("name", parameterName);
-        Node choiceList = new Node(
-            definitionNode,
-            "choices",
-            Collections.singletonMap("class", "java.util.Arrays$ArrayList"));
-        for (String choice : choices) {
-            new Node(choiceList, "a", Collections.singletonMap("class", "string"), choice);
-        }
+        EditableChoiceParameterDefinition definition =
+                new EditableChoiceParameterDefinition(parameterName);
+        definition.setChoices(choices);
         if (defaultValue != null) {
-            definitionNode.appendNode("defaultValue", defaultValue);
+            definition.setDefaultValue(defaultValue);
         }
         if (description != null) {
-            definitionNode.appendNode("description", description);
+            definition.setDescription(description);
         }
-        return definitionNode;
+        return definition;
     }
 }
