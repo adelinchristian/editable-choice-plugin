@@ -100,15 +100,35 @@ parameters for `+filterConfig+`:
 
 == Build
 
-The build requires Java 17 or newer and Maven 3.9 or newer. From the plugin
-repository root, run:
+The build requires Java 17 and Maven 3.9 or newer. Java 17 is recommended for
+this project because the legacy license-processing plugin is not compatible
+with newer Java versions.
+
+From the plugin repository root, run the full verification build:
 
 [source,bash]
 ----
 mvn clean verify
 ----
 
-If Maven is installed in a user-local directory, use its full path instead:
+On Windows PowerShell, set Java 17 and use the Maven installation path. Quote
+the `-D` arguments so PowerShell passes them to Maven unchanged:
+
+[source,powershell]
+----
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+
+Set-Location "C:\path\to\editable-choice-plugin"
+& "C:\LegacyApp\apache-maven-3.9.16\bin\mvn.cmd" clean package "-DskipTests" "-Dspotbugs.skip=true"
+----
+
+The command above skips tests and SpotBugs and is useful for producing the HPI
+when the SpotBugs check reports the existing `appendNode` return-value warning.
+For a complete verification build, use `mvn clean verify` after resolving that
+warning.
+
+If Maven is installed in a user-local directory on Linux or macOS, use its full path instead:
 
 [source,bash]
 ----
