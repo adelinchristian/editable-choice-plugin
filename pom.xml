@@ -15,7 +15,7 @@
         <changelist>999999-SNAPSHOT</changelist>
         <!-- Recommended versions: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#currently-recommended-versions -->
         <jenkins.version>2.555.3</jenkins.version>
-        <job-dsl.version>3732.v9a_c49a_61a_313</job-dsl.version>
+        <job-dsl.version>3654.vdf58f53e2d15</job-dsl.version>
         <hpi-plugin.version>3.1795.v6fb_496fc129b_</hpi-plugin.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     </properties>
