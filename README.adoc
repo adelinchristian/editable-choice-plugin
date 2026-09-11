@@ -9,6 +9,9 @@
 Editable Choice plugin is a https://www.jenkins.io/[Jenkins] plugin providing editable choice parameter feature,
 that is, you can select a value from choices or you can input any value even not in choices.
 
+This source code is forked from https://github.com/jenkinsci/editable-choice-plugin[the original Editable Choice plugin].
+This fork adds Job DSL compatibility and updates the plugin for compatibility with the latest Jenkins releases.
+
 == Getting started
 
 You can use Editable Choice in your job just like built-in choice paraemters:
